@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+.hero-artisan {
+    background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+    padding: 3rem 1rem 2rem 1rem;
+    text-align: center;
+    border-radius: 18px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+}
+.hero-artisan h1 {
+    font-size: 2.8rem;
+    color: #b85c38;
+    margin-bottom: 0.5rem;
+    font-family: 'Segoe UI', sans-serif;
+}
+.hero-artisan p {
+    font-size: 1.25rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+.contents-box {
+    background: #f7e9e3;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    margin: 1.5rem auto 2rem auto;
+    max-width: 500px;
+    box-shadow: 0 2px 8px rgba(184,92,56,0.07);
+}
+.handbook-section {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(184,92,56,0.08);
+    margin-bottom: 2rem;
+    padding: 2rem 1.5rem;
+    transition: box-shadow 0.2s;
+}
+.handbook-section:hover {
+    box-shadow: 0 6px 24px rgba(184,92,56,0.18);
+}
+.handbook-section h2 {
+    color: #b85c38;
+    margin-bottom: 0.7rem;
+    font-size: 1.5rem;
+}
+.cta-artisan {
+    background: #b85c38;
+    color: #fff;
+    border-radius: 10px;
+    padding: 1.2rem 2rem;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    box-shadow: 0 2px 8px rgba(184,92,56,0.12);
+}
+.cta-artisan a {
+    color: #fff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    color: #b85c38;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+@media (max-width: 600px) {
+    .hero-artisan { padding: 2rem 0.5rem; }
+    .handbook-section { padding: 1rem 0.5rem; }
+    .cta-artisan {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+</style>
+<main class="main-content">
+    <section class="hero-artisan">
+        <h1><i class="fa-solid fa-seedling"></i> Artisan Handbook</h1>
+        <p>Empowering home-based pickle & snack makers to grow, thrive, and shine!</p>
+        <p class="resource-desc">A guide for home-based pickle and snack makers. Learn best practices, packaging, hygiene, and how to grow your artisan business online.</p>
+    </section>
+
+    <!-- Handbook Sections (unchanged) -->
+    <div class="handbook-section" id="best-practices">
+        <h2><i class="fa-solid fa-leaf"></i> Best Practices</h2>
+        <p>Maintain quality by using fresh, local ingredients. Keep your workspace clean and follow traditional recipes for authentic taste. Consistency and care in every batch will set you apart!</p>
+    </div>
+    <div class="handbook-section" id="packaging">
+        <h2><i class="fa-solid fa-box"></i> Packaging & Hygiene</h2>
+        <p>Use food-safe, eco-friendly packaging. Label your products clearly and store them in a cool, dry place. Always wear gloves and hairnets while preparing food. Good hygiene builds trust and loyalty.</p>
+    </div>
+    <div class="handbook-section" id="growth">
+        <h2><i class="fa-solid fa-chart-line"></i> Growing Your Business</h2>
+        <p>Promote your products online, engage with customers, and consider joining local food fairs. Share your story, use social media, and build a loyal customer base. Never stop learning and innovating!</p>
+    </div>
+    <div class="cta-artisan">
+        <span>Ready to take your artisan journey to the next level? <b>Seller community coming soon!</b></span>
+    </div>
+</main>
+{% endblock %}

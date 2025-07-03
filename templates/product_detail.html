@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Product Detail</h2>
+<!-- Product details, image, add to cart, and suggestions -->
+<div id="product-detail"></div>
+<div id="product-suggestions"></div>
+
+<div class="similar-products product-grid">
+    {% for base_id, group in similar_products|groupby('base_id') %}
+        {% set first = group[0] %}
+        <div class="product-card">
+            <img src="{{ first.img }}" alt="{{ first.name }}">
+            <h4>{{ first.name.replace(' ' ~ first.weight ~ 'g', '') }}</h4>
+            <p>{{ first.desc }}</p>
+            <label>Weight:
+                <select class="weight-select" data-base-id="{{ base_id }}">
+                    {% for p in group %}
+                        <option value="{{ p.weight }}">{{ p.weight }}g - Rs.{{ p.price }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <button class="add-to-cart-btn" data-base-id="{{ base_id }}">Add to Cart</button>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

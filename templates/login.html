@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-content">
+    <section class="auth-section">
+        <h2>Login</h2>
+        {%- with messages = get_flashed_messages(with_categories=true) %}
+          {%- if messages %}
+            {%- for category, message in messages %}
+              <div class="flash {{ category }}">{{ message }}</div>
+            {%- endfor %}
+          {%- endif %}
+        {%- endwith %}
+        <div id="login-status"></div>
+        <form id="login-form" class="auth-form" method="POST" action="{{ url_for('login') }}">
+            <input type="hidden" name="next" value="{{ request.args.get('next','') }}">
+            <label>Email:<br><input type="email" name="email" required autocomplete="username"></label>
+            <label>Password:<br><input type="password" name="password" required autocomplete="current-password"></label>
+            <button type="submit">Login</button>
+            <p class="auth-link">Don't have an account? <a href="/register">Register</a></p>
+        </form>
+    </section>
+</main>
+    <!-- Client-side login JS removed; form now posts to server login route -->
+{% endblock %}

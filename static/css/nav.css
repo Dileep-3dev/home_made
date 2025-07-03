@@ -1,0 +1,146 @@
+/* Navigation bar styles */
+.main-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background: var(--main-dark-green);
+    color: #fff;
+    padding: 1.2rem 3vw;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(255,179,71,0.10);
+    gap: 2rem;
+}
+.main-nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 0.5rem;
+    transition: background 0.2s, color 0.2s;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+.main-nav a:hover, .main-nav .active {
+    background-color:rgb(255, 255, 97);
+    color: var(--main-dark-green);
+}
+#cart-icon {
+    background: var(--main-orange);
+    color: var(--main-dark-green);
+    font-weight: bold;
+    border-radius: 2rem;
+    padding: 0.5rem 1.2rem;
+    margin-left: 1rem;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 1px 4px rgba(255,179,71,0.10);
+    position: relative;
+}
+#cart-icon:hover {
+    background: var(--main-dark-orange);
+    color: #fff;
+}
+.nav-auth {
+    margin-left: 1.5rem;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 700;
+    gap: 0.5rem;
+    margin-right: auto;
+}
+.logo-icon {
+    font-size: 1.5rem;
+}
+.logo-text {
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+/* Logo image sizing */
+.logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+/* Profile dropdown styling */
+.nav-profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+.profile-icon {
+    font-size: 1.6rem;
+    color: #fff;
+}
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    color: #333;
+    min-width: 200px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 0.5rem 0;
+    z-index: 200;
+}
+/* Show dropdown on .show class */
+.profile-dropdown.show {
+    display: block;
+}
+.profile-dropdown .nav-auth a {
+    display: block;
+    padding: 0.6rem 1.2rem;
+    color: #333;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.profile-dropdown .nav-auth a:hover {
+    background: #f5f5f5;
+}
+/* Badge count on cart */
+.cart-count {
+    position: absolute;
+    top: -4px;
+    right: -8px;
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1;
+    min-width: 18px;
+    text-align: center;
+}
+.nav-user-name {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.nav-user-name:hover, .nav-user-name:focus {
+    color: #171716;
+}
+@media (max-width: 700px) {
+    .main-nav {
+        flex-direction: column;
+        gap: 0.7rem;
+        font-size: 1rem;
+        align-items: flex-start;
+    }
+    #cart-icon {
+        margin-left: 0;
+    }
+}

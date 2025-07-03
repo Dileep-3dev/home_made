@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-content">
+  <div class="order-confirmation-card">
+    <h2><i class="fa-solid fa-circle-check"></i> Order Confirmation</h2>
+    <div id="order-confirmation"></div>
+  </div>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get('orderId');
+    if (!orderId) {
+        document.getElementById('order-confirmation').innerHTML = '<p>Order not found.</p>';
+        return;
+    }
+    fetch('/api/order/' + orderId)
+        .then(res => res.json())
+        .then(order => {
+            if (!order || order.error) {
+                document.getElementById('order-confirmation').innerHTML = '<p>Order not found.</p>';
+                return;
+            }
+            document.getElementById('order-confirmation').innerHTML = `
+                <div class="order-confirm-msg">
+                  <h3>Thank you for your order!</h3>
+                  <p>Your order ID is <b>#${order.id}</b></p>
+                  <p>Total: <b>Rs.${order.total}</b></p>
+                  <div class="order-confirm-btns">
+                    <a href="/products" class="checkout-btn">Continue Shopping</a>
+                    <a href="/orders/${order.id}" class="checkout-btn">View Order Details</a>
+                  </div>
+                </div>
+            `;
+        });
+});
+</script>
+{% endblock %}

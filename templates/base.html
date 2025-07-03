@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Made Pickles & Snacks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/general.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/product_card.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart_checkout.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700|PT+Sans:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <nav class="main-nav" role="navigation" aria-label="Main Navigation">
+        <a href="/" class="nav-logo">
+            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" class="logo-img">
+            <span class="logo-text">
+                <span class="logo-line1">Home</span>
+                <span class="logo-line2">Made Pickles</span>
+            </span>
+        </a>
+        <a href="/">Home</a>
+        <a href="/veg-pickles">Veg Pickles</a>
+        <a href="/non-veg-pickles">Non-Veg Pickles</a>
+        <a href="/snacks">Snacks</a>
+        <a href="/browse">Browse by Region</a>
+        <a href="/contact">Contact Us</a>
+        <a href="/cart" id="cart-icon">
+            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+            <span id="cart-count" class="cart-count">0</span>
+        </a>
+        {% if session.user_email %}
+        <a href="/profile" class="nav-profile">
+            <i class="fa-solid fa-user-circle profile-icon" aria-hidden="true"></i>
+            <span class="nav-user-name">{{ session.user_name }}</span>
+        </a>
+        {% else %}
+        <a href="/login" class="nav-login">
+            <i class="fa-solid fa-sign-in-alt" aria-hidden="true"></i>
+            Login
+        </a>
+        {% endif %}
+    </nav>
+    {% block content %}{% endblock %}
+    <footer class="main-footer">
+        <div class="footer-columns">
+            <div class="footer-col">
+                <h3>Artisan Eats</h3>
+                <p>Your destination for authentic, handcrafted pickles, snacks, and treats, connecting you with local artisans and traditional flavors.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/products">All Products</a></li>
+                    <li><a href="/cart">Your Cart</a></li>
+                    <li><a href="/orders">Order History</a></li>
+                    <li><a href="#featured-delights" class="footer-featured-link">Featured Delights</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="/artisan-handbook"><i class="fa-regular fa-book"></i> Artisan Handbook</a></li>
+                    <li><a href="/seller-forum"><i class="fa-regular fa-comments"></i> Seller Forum</a></li>
+                    <li><a href="/contact"><i class="fa-regular fa-envelope"></i> Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <hr>
+            <div class="footer-tagline">"Preserving Traditions, One Jar at a Time."</div>
+            <div class="footer-copyright">&copy; 2025 Artisan Eats. All rights reserved.<br>Handcrafted with love by our artisans.</div>
+        </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/utils.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/product.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+</body>
+</html>

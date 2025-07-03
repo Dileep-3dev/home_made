@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-content">
+    <section class="resource-section">
+        <h1><i class="fa-regular fa-comments"></i> Seller Forum</h1>
+        <p class="resource-desc">Connect with other sellers, ask questions, share tips, and grow your network in our supportive artisan community.</p>
+        <form class="forum-form" id="forum-form">
+            <input type="text" name="title" placeholder="Post title or question" required>
+            <textarea name="content" placeholder="Share your question, tip, or experience..." required></textarea>
+            <button type="submit">Post</button>
+        </form>
+        <div class="forum-posts" id="forum-posts">
+            <div class="forum-placeholder">No posts yet. Be the first to ask a question or share a tip!</div>
+        </div>
+    </section>
+</main>
+<script>
+document.getElementById('forum-form').onsubmit = function(e) {
+    e.preventDefault();
+    const title = this.title.value.trim();
+    const content = this.content.value.trim();
+    if (!title || !content) return;
+    const posts = document.getElementById('forum-posts');
+    const postDiv = document.createElement('div');
+    postDiv.className = 'forum-post';
+    postDiv.innerHTML = `<h3>${title}</h3><p>${content}</p><span class='forum-meta'>Just now</span>`;
+    if (posts.querySelector('.forum-placeholder')) posts.innerHTML = '';
+    posts.prepend(postDiv);
+    this.reset();
+};
+</script>
+{% endblock %}

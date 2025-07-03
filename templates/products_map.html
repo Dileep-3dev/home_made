@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="map-main-layout">
+    <aside class="map-sidebar">
+        <h2><span style="font-size:1.3em;vertical-align:middle;">&#128712;</span> Select Region</h2>
+        <button class="sidebar-catalog-btn" onclick="window.location.href='/products'">Browse Full Catalogue Instead</button>
+        <ul class="region-list">
+            <li class="region-item" data-region="North">North India</li>
+            <li class="region-item" data-region="South">South India</li>
+            <li class="region-item" data-region="East">East India</li>
+            <li class="region-item" data-region="West">West India</li>
+            <li class="region-item" data-region="Central">Central India</li>
+        </ul>
+        <h3 style="margin-top:2.5rem;"><span style="font-size:1.1em;vertical-align:middle;">&#128722;</span> Product Type</h3>
+        <div class="type-tabs">
+            <button class="type-tab active" data-type="All"><span style="font-size:1.1em;">&#128722;</span> All</button>
+            <button class="type-tab" data-type="Pickles"><span style="font-size:1.1em;">&#127860;</span> Pickles</button>
+            <button class="type-tab" data-type="Snacks"><span style="font-size:1.1em;">&#129473;</span> Snacks</button>
+        </div>
+    </aside>
+    <section class="map-content">
+        <h2>Products by Region</h2>
+        <div class="map-products" id="region-products">
+            <p class="map-placeholder">Select a region and product type from the list to see products.</p>
+        </div>
+    </section>
+</main>
+{% endblock %}

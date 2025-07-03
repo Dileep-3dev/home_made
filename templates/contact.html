@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="contact-container" style="max-width: 500px; margin: 40px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 32px 28px;">
+    <h2 style="text-align:center; color: #2d3a4b; margin-bottom: 24px;">Contact Us</h2>
+    <form method="post" class="contact-form" id="contactForm">
+        <label for="name" style="font-weight: 500;">Name:</label>
+        <input type="text" id="name" name="name" required style="width:100%;padding:8px 10px;margin:8px 0 18px 0;border:1px solid #ccc;border-radius:5px;">
+        <label for="email" style="font-weight: 500;">Email:</label>
+        <input type="email" id="email" name="email" required style="width:100%;padding:8px 10px;margin:8px 0 18px 0;border:1px solid #ccc;border-radius:5px;">
+        <label for="message" style="font-weight: 500;">Message:</label>
+        <textarea id="message" name="message" rows="5" required style="width:100%;padding:8px 10px;margin:8px 0 18px 0;border:1px solid #ccc;border-radius:5px;"></textarea>
+        <button type="submit" style="width:100%;background:#2d3a4b;color:#fff;padding:10px 0;border:none;border-radius:5px;font-size:1.1em;font-weight:600;cursor:pointer;transition:background 0.2s;">Send Message</button>
+        <div id="contactStatus" style="margin-top:18px;text-align:center;"></div>
+    </form>
+</div>
+<script>
+// AJAX submit for better UX
+const form = document.getElementById('contactForm');
+form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const status = document.getElementById('contactStatus');
+    status.textContent = '';
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    try {
+        const resp = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        const result = await resp.json();
+        if (result.success) {
+            status.style.color = '#28a745';
+            status.textContent = 'Thank you! Your message has been sent.';
+            form.reset();
+        } else {
+            status.style.color = '#c0392b';
+            status.textContent = result.error || 'Failed to send message.';
+        }
+    } catch {
+        status.style.color = '#c0392b';
+        status.textContent = 'Failed to send message.';
+    }
+});
+</script>
+{% endblock %}

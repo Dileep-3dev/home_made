@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-content">
+  <h2>Order History</h2>
+  <div class="order-history-table-wrapper">
+    <table class="order-history-table" id="order-history-table">
+      <thead>
+        <tr>
+          <th>Order #</th>
+          <th>Date</th>
+          <th>Total</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="order-history"></tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}

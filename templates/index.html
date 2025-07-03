@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-content">
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Home Made Pickles & Snacks – Taste the Best</h1>
+            <p class="tagline">Preserving Traditions, One Jar at a Time.</p>
+            <div class="cta-buttons">
+                <button id="explore-btn" type="button">Explore Homemade Goods</button>
+                <button id="specials-btn" type="button">Our Specials</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='img/hero-banner.jpg') }}" alt="Home Made Pickles & Snacks" class="hero-img">
+        </div>
+    </section>
+    <section class="why-choose-us">
+        <h2>Why Choose Us</h2>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon" style="background:#e1b800;"><i class="fa-solid fa-seedling"></i></div>
+                <h3>Heritage Recipes</h3>
+                <p>Authentic, time-honored flavors from family kitchens.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:#6bb36b;"><i class="fa-solid fa-leaf"></i></div>
+                <h3>Farm-Fresh & Preservative-Free</h3>
+                <p>Only the best, natural ingredients—no chemicals.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon" style="background:#2e4d1a;"><i class="fa-solid fa-truck-fast"></i></div>
+                <h3>Artisan Crafted, Tech Delivered</h3>
+                <p>Handmade by local artisans, delivered to your door.</p>
+            </div>
+        </div>
+    </section>
+    <section class="featured-delights" id="featured-delights">
+        <h2>Featured Delights</h2>
+        <div class="tabs featured-tabs">
+            <button class="tab active" data-type="Pickles" type="button">Featured Pickles</button>
+            <button class="tab" data-type="Snacks" type="button">Featured Snacks</button>
+        </div>
+        <div id="featured-products" class="product-grid">
+            <div class="spinner" aria-label="Loading products..."></div>
+        </div>
+    </section>
+    <!-- Browse Options Modal -->
+    <div id="browse-modal" class="browse-modal" aria-modal="true" role="dialog" tabindex="-1" style="display:none;">
+        <div class="browse-modal-content">
+            <button class="browse-modal-close" aria-label="Close">&times;</button>
+            <h2><span style="font-size:1.3em;vertical-align:middle;">&#128722;</span> How would you like to browse?</h2>
+            <p>Choose your preferred way to discover our homemade pickles and snacks.</p>
+            <hr>
+            <button class="browse-modal-btn" onclick="window.location.href='/products/map'">
+                <span style="font-size:1.2em;vertical-align:middle;">&#128506;</span> Choose from Map (Regional)
+            </button>
+            <button class="browse-modal-btn" onclick="window.location.href='/products'">
+                <span style="font-size:1.2em;vertical-align:middle;">&#9776;</span> Browse Full Catalog
+            </button>
+            <hr>
+            <button class="browse-modal-cancel" type="button">Cancel</button>
+        </div>
+    </div>
+</main>
+{% endblock %}

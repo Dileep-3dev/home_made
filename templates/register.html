@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-content">
+    <section class="auth-section">
+        <h2>Register</h2>
+        {%- with messages = get_flashed_messages(with_categories=true) %}
+          {%- if messages %}
+            {%- for category, message in messages %}
+              <div class="flash {{ category }}">{{ message }}</div>
+            {%- endfor %}
+          {%- endif %}
+        {%- endwith %}
+        <div id="register-status"></div>
+        <form id="register-form" class="auth-form" method="POST" action="{{ url_for('register') }}">
+            <input type="hidden" name="next" value="{{ next }}">
+            <label>Name:<br><input type="text" name="name" required autocomplete="name"></label>
+            <label>Email:<br><input type="email" name="email" required autocomplete="username"></label>
+            <label>Password:<br><input type="password" name="password" required autocomplete="new-password"></label>
+            <label>Confirm Password:<br><input type="password" name="confirm_password" required autocomplete="new-password"></label>
+            <label>Phone:<br><input type="tel" name="phone" required autocomplete="tel"></label>
+            <button type="submit">Register</button>
+            <p class="auth-link">Already have an account? <a href="{{ url_for('login', next=next) }}">Login</a></p>
+        </form>
+    </section>
+</main>
+<!-- Client-side registration removed; form posts to server to handle registration -->
+{% endblock %}

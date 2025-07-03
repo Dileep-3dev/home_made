@@ -1,0 +1,28 @@
+<!-- veg_pickles.html -->
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-content">
+    <section class="catalog-section">
+        <h2 id="catalog-title">Veg Pickles</h2>
+        <div class="catalog-controls">
+            <input type="text" id="search-bar" placeholder="Search products..." aria-label="Search products">
+            <select id="type-filter">
+                <option value="veg_pickles">Veg Pickles</option>
+                <option value="non_veg_pickles">Non-Veg Pickles</option>
+                <option value="snacks">Snacks</option>
+            </select>
+        </div>
+        <div id="product-grid" class="product-grid">
+            <div class="spinner" aria-label="Loading products..."></div>
+        </div>
+        <div id="no-products-message" style="display:none;">No products found.</div>
+    </section>
+</main>
+<script>
+// Auto-select veg_pickles filter on page load
+window.addEventListener('DOMContentLoaded', function() {
+    var typeFilter = document.getElementById('type-filter');
+    if(typeFilter) typeFilter.value = 'veg_pickles';
+});
+</script>
+{% endblock %}
