@@ -26,7 +26,7 @@ products_table = dynamodb.Table('PickleApp_Products')
 orders_table = dynamodb.Table('PickleApp_Orders')
 cart_table = dynamodb.Table('PickleApp_Cart')
 
-sns_topic_arn = os.environ.get('SNS_TOPIC_ARN', 'sns_arn_key')
+sns_topic_arn = os.environ.get('SNS_TOPIC_ARN')
 
 # SNS (Simple Notification Service)
 sns = aws_session.client('sns')
