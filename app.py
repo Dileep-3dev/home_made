@@ -122,7 +122,7 @@ sns_topic_arn = os.environ.get('SNS_TOPIC_ARN', 'srn-key')
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL', "pickleshop@example.com")  # Update to your PickleApp email
-SENDER_PASSWORD = os.environ.get('SENDER_PASSWORD', "your_app_password")  # Update to your PickleApp app password
+SENDER_PASSWORD = os.environ.get('SENDER_PASSWORD', "vcbx stsp yvgi dyhn")  # Update to your PickleApp app password
 
 
 def get_user_by_email(email):
