@@ -12,7 +12,7 @@ import boto3
 import json
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', 'your_secret_key')  # Change this to a strong secret key
+app.secret_key = os.environ.get('SECRET_KEY', 'your_secret_key') 
 
 mock_orders = []
 
@@ -26,7 +26,6 @@ products_table = dynamodb.Table('PickleApp_Products')
 orders_table = dynamodb.Table('PickleApp_Orders')
 cart_table = dynamodb.Table('PickleApp_Cart')
 
-# --- AWS SNS Topic ARN (for notifications) ---
 sns_topic_arn = os.environ.get('SNS_TOPIC_ARN', 'sns_arn_key')
 
 # SNS (Simple Notification Service)
@@ -42,11 +41,10 @@ def send_sns_message(phone_number, message):
         print(f"SNS error: {e}")
         return None
 
-# --- Email settings (for sending emails) ---
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-SENDER_EMAIL = os.environ.get('SENDER_EMAIL', "modalavalasadileep6@gmail.com")
-SENDER_PASSWORD = os.environ.get('SENDER_PASSWORD', "vcbt qcsp yvgi dyhn")
+SENDER_EMAIL = os.environ.get('SENDER_EMAIL', "dileepexample@gmail.com")
+SENDER_PASSWORD = os.environ.get('SENDER_PASSWORD', "vcbx stsp yvgi dyhn")
 
 def send_email(to_email, subject, body):
     msg = MIMEMultipart()
@@ -119,16 +117,13 @@ def save_orders(orders):
     with open(ORDERS_FILE, 'w') as f:
         json.dump(orders, f, indent=2)
 
-# --- AWS SNS Topic ARN (for notifications) ---
-sns_topic_arn = os.environ.get('SNS_TOPIC_ARN', 'arn:aws:sns:ap-south-1:557690616836:BookRequestNotifications')
+sns_topic_arn = os.environ.get('SNS_TOPIC_ARN', 'srn-key')
 
-# --- Email settings (for sending emails) ---
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL', "pickleshop@example.com")  # Update to your PickleApp email
 SENDER_PASSWORD = os.environ.get('SENDER_PASSWORD', "your_app_password")  # Update to your PickleApp app password
 
-# Helper: Try DynamoDB, fallback to local users.json
 
 def get_user_by_email(email):
     # Try DynamoDB first
@@ -320,7 +315,7 @@ def artisan_handbook():
 def seller_forum():
     return render_template('seller_forum.html')
 
-# Helper function to get products by category
+
 def get_products_by_category(category):
     img_map = {
         'Chicken Pickle': '/static/img/chicken-pickle.jpg',
@@ -414,7 +409,6 @@ def snacks():
     products = get_products_by_category('snacks')
     return render_template('snacks.html', products=products, category='snacks')
 
-# --- Product Data Structure (for local fallback) ---
 products_fallback = {
     'non_veg_pickles': [
         {'id': 1, 'name': 'Chicken Pickle', 'weights': {'250': 600, '500': 1200, '1000': 1800}},
@@ -442,8 +436,6 @@ products_fallback = {
         {'id': 21, 'name': 'Gavvalu', 'weights': {'250': 250, '500': 500, '1000': 750}},
     ]
 }
-
-# --- API Endpoints ---
 @app.route('/api/products')
 def api_products():
     time.sleep(1) # Simulate delay
@@ -729,7 +721,7 @@ def api_user_profile():
 
 @app.route('/contact', methods=['GET'])
 def contact():
-    # Renders the contact form page
+   
     return render_template('contact.html')
 
 @app.route('/api/contact', methods=['POST'])
@@ -767,7 +759,6 @@ def api_snacks():
     products = get_products_by_category('snacks')
     return jsonify(products)
 
-# --- Cart API Endpoints (DynamoDB) ---
 from boto3.dynamodb.conditions import Key
 
 @app.route('/api/cart', methods=['GET'])
