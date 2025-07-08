@@ -43,13 +43,8 @@ def send_sns_message(phone_number, message):
 
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-<<<<<<< HEAD
-SENDER_EMAIL = os.environ.get('SENDER_EMAIL', "dileepexample@gmail.com")
-SENDER_PASSWORD = os.environ.get('SENDER_PASSWORD', "vcbx stsp yvgi dyhn")
-=======
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL', "dileep6@gmail.com")
 SENDER_PASSWORD = os.environ.get('SENDER_PASSWORD', "vcbt qcsp yvgi dyhn")
->>>>>>> 6f6f38f (modified some structural paths)
 
 def send_email(to_email, subject, body):
     msg = MIMEMultipart()
